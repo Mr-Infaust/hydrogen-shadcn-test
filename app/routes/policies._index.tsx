@@ -16,7 +16,7 @@ export default function Policies() {
   const {policies} = useLoaderData<typeof loader>();
 
   return (
-    <div className="container flex flex-col gap-4 p-4 mx-auto">
+    <div className="container flex flex-col gap-4 p-4 mt-8 mx-auto">
       <h1>Policies</h1>
       <div className="flex flex-col gap-2">
         {policies.map((policy) => {

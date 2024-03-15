@@ -38,7 +38,7 @@ export default function Article() {
   }).format(new Date(article.publishedAt));
 
   return (
-    <div className="container flex flex-col gap-6 p-4 mx-auto">
+    <div className="container flex flex-col gap-6 p-4 mt-8 mx-auto">
       <div className="flex flex-col gap-2">
         <h1>{title}</h1>
         <span>{publishedDate} &middot; {author?.name}</span>

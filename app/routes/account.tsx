@@ -108,7 +108,7 @@ function AccountLayout({
     : 'Account Details';
 
   return (
-    <div className="container flex flex-col gap-6 p-4 mx-auto">
+    <div className="container flex flex-col gap-6 p-4 mt-8 mx-auto">
       <h1>{heading}</h1>
       <AccountMenuAside heading={heading}>
         <Button className="flex lg:hidden">

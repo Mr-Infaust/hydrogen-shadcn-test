@@ -117,7 +117,7 @@ export default function Product() {
   const {product, variants} = useLoaderData<typeof loader>();
   const {selectedVariant} = product;
   return (
-    <div className="container grid items-start p-4 mx-auto md:gap-16 md:grid-cols-2">
+    <div className="container grid items-start p-4 mx-auto md:gap-16 mt-8 md:grid-cols-2">
       <ProductImage image={selectedVariant?.image} />
       <ProductMain
         selectedVariant={selectedVariant}
@@ -157,9 +157,11 @@ function ProductMain({
   const {title, descriptionHtml} = product;
   return (
     <div className="flex flex-col gap-6 py-6">
-      <div className="flex flex-col gap-2">
-        <ProductBadges selectedVariant={selectedVariant} />
-        <h1>{title}</h1>
+      <div className="flex flex-row gap-2 items-center justify-between">
+        <div className="flex flex-col">
+          <ProductBadges selectedVariant={selectedVariant} />
+          <h1>{title}</h1>
+        </div>
         <ProductPrice selectedVariant={selectedVariant} />
       </div>
       <Suspense
@@ -184,7 +186,7 @@ function ProductMain({
           )}
         </Await>
       </Suspense>
-      <div className="prose-sm prose-neutral prose-invert" dangerouslySetInnerHTML={{__html: descriptionHtml}} />
+      <div className="prose-sm prose-neutral prose-invert rounded-lg border bg-card text-card-foreground shadow-sm p-4" dangerouslySetInnerHTML={{__html: descriptionHtml}} />
     </div>
   );
 }
@@ -223,7 +225,7 @@ function ProductPrice({
   selectedVariant: ProductFragment['selectedVariant'];
 }) {
   return (
-    <div className="product-price">
+    <div className="product-price text-3xl rounded-lg border bg-card text-card-foreground shadow-sm p-4">
       {selectedVariant?.compareAtPrice ? (
         <div className="flex items-center gap-2">
           {selectedVariant ? <Money data={selectedVariant.price} /> : null}

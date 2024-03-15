@@ -46,7 +46,7 @@ export default function Policy() {
   const {policy} = useLoaderData<typeof loader>();
 
   return (
-    <div className="container flex flex-col gap-4 p-4 mx-auto">
+    <div className="container flex flex-col gap-4 p-4 mt-8 mx-auto">
       <div>
         <Link className={buttonVariants({ variant: 'link' })} to="/policies">← Back to Policies</Link>
       </div>

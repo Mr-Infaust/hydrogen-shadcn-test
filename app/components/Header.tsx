@@ -15,8 +15,8 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({header, isLoggedIn, cart}: HeaderProps) {
   const {shop, menu} = header;
   return (
-    <header className="z-[1] border-b">
-      <div className="container flex items-center gap-2 px-4 py-2 mx-auto">
+    <header className="z-[1] border-b sticky top-0 bg-card">
+      <div className="container flex items-center gap-2 px-4 py-4 mx-auto">
         <HeaderMenuMobileToggle header={header} />
         <NavLink prefetch="intent" to="/" end>
           <strong>{shop.name}</strong>
@@ -43,7 +43,7 @@ export function HeaderMenu({
 
   return (
     <nav
-      className={`gap-1 ${viewport === 'mobile' ? 'flex flex-col' : 'ml-3 hidden md:flex'}`}
+      className={`gap-2 ${viewport === 'mobile' ? 'flex flex-col' : 'ml-3 hidden md:flex'}`}
       role="navigation"
     >
       {(menu || FALLBACK_HEADER_MENU).items.map((item) => {
@@ -82,7 +82,7 @@ function HeaderCtas({
   cart,
 }: Pick<HeaderProps, 'isLoggedIn' | 'cart' | 'header'>) {
   return (
-    <nav className="flex items-center gap-1 ml-auto" role="navigation">
+    <nav className="flex items-center gap-2 ml-auto" role="navigation">
       <NavLink
         className={({ isActive, isPending }) => `
           ${buttonVariants({ variant: isActive ? 'secondary' : 'ghost', size: 'icon' })}
@@ -93,7 +93,7 @@ function HeaderCtas({
       >
         <Icon
           icon={ isLoggedIn ? 'lucide:user-check' : 'lucide:user' }
-          className="w-4 h-4"
+          className="w-6 h-6"
         />
       </NavLink>
       <SearchToggle />
@@ -109,7 +109,7 @@ function HeaderMenuMobileToggle({
   return (
     <MobileMenuAside menu={menu}>
       <Button variant="ghost" className="md:hidden" size="icon">
-        <Icon icon="lucide:align-justify" className="w-4 h-4" />
+        <Icon icon="lucide:align-justify" className="w-6 h-6" />
       </Button>
     </MobileMenuAside>
   );
@@ -119,7 +119,7 @@ function SearchToggle() {
   return (
     <SearchAside>
       <Button variant="ghost" size="icon" title="Search">
-        <Icon icon="lucide:search" className="w-4 h-4" />
+        <Icon icon="lucide:search" className="w-6 h-6" />
       </Button>
     </SearchAside>
   );
@@ -133,7 +133,7 @@ function CartBadge({count, cart}: CartBadgeProps) {
   return (
     <CartAside cart={cart}>
       <Button variant="outline">
-        <Icon icon="lucide:shopping-cart" className="w-4 h-4 mr-2" />
+        <Icon icon="lucide:shopping-cart" className="w-6 h-6 mr-2" />
         {count}
       </Button>
     </CartAside>

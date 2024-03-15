@@ -126,11 +126,11 @@ export default function Collection() {
   const { collection, appliedFilters } = useLoaderData<typeof loader>()
 
   return (
-    <div className="container flex flex-col gap-4 p-4 mx-auto">
+    <div className="container flex flex-col gap-4 p-4 mt-8 mx-auto">
       <h1>{collection.title}</h1>
 
       {collection.description && (
-        <p className="collection-description">{collection.description}</p>
+        <p className="collection-description rounded-lg border bg-card text-card-foreground shadow-sm p-4">{collection.description}</p>
       )}
 
       <SortFilter
@@ -194,7 +194,7 @@ function ProductCard({
   const variantUrl = useVariantUrl(product.handle, variant.selectedOptions);
   return (
     <Link
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-2 rounded-lg border bg-card text-card-foreground shadow-sm transition hover:scale-[1.02]"
       key={product.id}
       prefetch="intent"
       to={variantUrl}
@@ -209,8 +209,8 @@ function ProductCard({
           className="object-cover w-full h-full"
         />
       )}
-      <div>
-        <h4>{product.title}</h4>
+      <div className="p-4">
+        <h4 className={"text-xl pb-2"}>{product.title}</h4>
         <Money data={product.priceRange.minVariantPrice} className="text-sm" />
       </div>
     </Link>
